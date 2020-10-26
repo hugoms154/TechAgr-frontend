@@ -8,10 +8,10 @@ export default createGlobalStyle`
     box-sizing: border-box;
   }
   body {
-    background: #F0F2F5 ;
+    background: #F0F2F5;
     -webkit-font-smoothing: antialiased
   }
-  body, input, button {
+  body, input, button, textarea {
     font: 16px "Poppins", sans-serif;
   }
   button {
