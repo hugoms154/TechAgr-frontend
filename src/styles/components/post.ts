@@ -6,7 +6,8 @@ export const ContentContainer = styled.div`
 
   width: 100%;
   max-width: 1024px;
-  padding: 0 16px;
+  padding-left: 16px;
+  padding-right: 2px;
   border-radius: 25px;
 `;
 
