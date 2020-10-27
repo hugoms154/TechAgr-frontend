@@ -17,11 +17,13 @@ interface Post {
 
 const Dashboard: React.FC = () => {
   const [posts, setPosts] = useState<Post[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function loadPosts() {
       const { data } = await api.get<Post[]>('/posts');
       setPosts(data);
+      setLoading(false);
     }
     loadPosts();
   }, []);
@@ -34,7 +36,7 @@ const Dashboard: React.FC = () => {
           <Link to="/posts">Criar novo tópico</Link>
         </ActionsContainer>
 
-        <Table posts={posts} />
+        {loading ? <h1>Carregando...</h1> : <Table posts={posts} />}
       </Container>
     </>
   );
