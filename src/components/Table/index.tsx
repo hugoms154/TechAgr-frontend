@@ -27,32 +27,34 @@ const Table: React.FC<TableProps> = ({ posts }) => {
         </thead>
 
         <tbody>
-          {posts &&
-            posts.map(
-              post =>
-                post.title && (
-                  <tr key={post.id}>
-                    <td>
-                      <Link
-                        to={{
-                          pathname: `/posts/${post.id}`,
-                          state: { post },
-                        }}
-                      >
-                        {post.title}
-                      </Link>
-                    </td>
-                    <td>{post.comments.length}</td>
-                    <td>
-                      <span>
-                        {Intl.DateTimeFormat('pt-br').format(
-                          new Date(post.created_at),
-                        )}
-                      </span>
-                    </td>
-                  </tr>
-                ),
-            )}
+          {posts.length !== 0 ? (
+            posts.map(post => (
+              <tr key={post.id}>
+                <td>
+                  <Link
+                    to={{
+                      pathname: `/posts/${post.id}`,
+                      state: { post },
+                    }}
+                  >
+                    {post.title}
+                  </Link>
+                </td>
+                <td>{post.comments.length}</td>
+                <td>
+                  <span>
+                    {Intl.DateTimeFormat('pt-br').format(
+                      new Date(post.created_at),
+                    )}
+                  </span>
+                </td>
+              </tr>
+            ))
+          ) : (
+            <td colSpan={3} align="center">
+              Não há dados
+            </td>
+          )}
         </tbody>
       </table>
     </Container>
